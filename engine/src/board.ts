@@ -18,8 +18,7 @@ class Board {
 		return this.gameArea;
 	}
 
-	// TODO: rename to avoid ambiguity with array.push
-	push(dir: Direction): void {
+	move(dir: Direction): void {
 		if (dir === "RIGHT" || dir === "LEFT") {
 			for (let row = 0; row < this.nrows; row++) {
 				const pushedRow =

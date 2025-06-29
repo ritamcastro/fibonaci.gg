@@ -56,7 +56,7 @@ describe("Rule #1: Numbers move as far as possible in the pushing direction", ()
 
 			const game = new Board(board);
 
-			game.push(direction as Direction);
+			game.move(direction as Direction);
 
 			const finalState = game.getState();
 			expect(finalState).toEqual(expectedBoard);
@@ -64,7 +64,7 @@ describe("Rule #1: Numbers move as far as possible in the pushing direction", ()
 	);
 });
 
-describe("Rule #2: When two consecutive numbers in the Fibonacci sequence are pushed one on another, they fuse into the next number.", () => {
+describe("Rule #2: When two consecutive numbers in the Fibonacci sequence are moveed one on another, they fuse into the next number.", () => {
 	const boardHorizontal = [
 		[0, 2, 0, 3],
 		[0, 21, 0, 55],
@@ -119,7 +119,7 @@ describe("Rule #2: When two consecutive numbers in the Fibonacci sequence are pu
 		({ board, direction, expectedBoard }) => {
 			const game = new Board(board);
 
-			game.push(direction as Direction);
+			game.move(direction as Direction);
 
 			const finalState = game.getState();
 			expect(finalState).toEqual(expectedBoard);
