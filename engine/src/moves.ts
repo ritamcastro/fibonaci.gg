@@ -1,4 +1,4 @@
-const moveNumbersToEnd = (line: number[]): number[] =>  {
+const moveNumbersRight = (line: number[]): number[] =>  {
 
     const zeros = line.filter(n => n === 0)
     const nonZeros = line.filter(n => n !== 0)
@@ -6,4 +6,13 @@ const moveNumbersToEnd = (line: number[]): number[] =>  {
     return [...zeros, ...nonZeros]
   }
 
-  export {moveNumbersToEnd}
+  const moveNumbersLeft = (line: number[]): number[] =>  {
+
+    const zeros = line.filter(n => n === 0)
+    const nonZeros = line.filter(n => n !== 0)
+
+    return [...nonZeros, ...zeros]
+  }
+
+
+  export {moveNumbersRight, moveNumbersLeft}
