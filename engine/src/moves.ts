@@ -1,18 +1,36 @@
-const moveNumbersRight = (line: number[]): number[] =>  {
+import { areConsecutiveInFibSequence } from "./fibonacci";
 
-    const zeros = line.filter(n => n === 0)
-    const nonZeros = line.filter(n => n !== 0)
+const leftPadWithZeros = (line: number[]): number[] => {
+	const zeros = line.filter((n) => n === 0);
+	const nonZeros = line.filter((n) => n !== 0);
 
-    return [...zeros, ...nonZeros]
-  }
+	const merged = mergeTiles(nonZeros);
 
-  const moveNumbersLeft = (line: number[]): number[] =>  {
-
-    const zeros = line.filter(n => n === 0)
-    const nonZeros = line.filter(n => n !== 0)
-
-    return [...nonZeros, ...zeros]
-  }
+	return merged.length === 0
+		? [...zeros, ...nonZeros]
+		: [...zeros, ...new Array(merged.length).fill(0), ...merged];
+};
 
 
-  export {moveNumbersRight, moveNumbersLeft}
+const rightPadWithZeros = (line: number[]) => {
+	const zeros = line.filter((n) => n === 0);
+	const nonZeros = line.filter((n) => n !== 0);
+
+	const merged = mergeTiles(nonZeros);
+
+	return merged.length === 0
+		? [...nonZeros, ...zeros]
+		: [...merged, ...new Array(merged.length).fill(0), ...zeros];
+};
+
+const mergeTiles = (subline: number[]): number[] => {
+	const merged = [];
+	for (let i = 1; i < subline.length; i++) {
+		if (areConsecutiveInFibSequence(subline[i], subline[i - 1])) {
+			merged.push(subline[i] + subline[i - 1]);
+		}
+	}
+	return merged;
+};
+
+export { leftPadWithZeros, rightPadWithZeros };
