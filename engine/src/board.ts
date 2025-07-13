@@ -1,8 +1,6 @@
 import type { Direction } from "./model";
 import { leftPadWithZeros, rightPadWithZeros } from "./moves";
 
-
-
 class Board {
 	private gameArea: number[][];
 	private ncols: number;

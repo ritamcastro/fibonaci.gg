@@ -53,7 +53,6 @@ describe("Rule #1: Numbers move as far as possible in the pushing direction", ()
 	])(
 		"pushes the tiles $direction when can't merge them",
 		({ board, direction, expectedBoard }) => {
-
 			const game = new Board(board);
 
 			game.move(direction as Direction);
@@ -76,7 +75,7 @@ describe("Rule #2: When two consecutive numbers in the Fibonacci sequence are mo
 		[3, 8],
 		[0, 21],
 	];
-	
+
 	it.each([
 		{
 			board: boardHorizontal,
@@ -125,4 +124,74 @@ describe("Rule #2: When two consecutive numbers in the Fibonacci sequence are mo
 			expect(finalState).toEqual(expectedBoard);
 		},
 	);
+});
+
+describe("Rule #3.1: Fusing orders are resolved in the backward direction of the push.", () => {
+	it.each([
+		{
+			board: [
+				[0, 1, 2, 3],
+				[0, 3, 2, 1],
+			],
+			direction: "RIGHT",
+			expectedBoard: [
+				[0, 0, 1, 5],
+				[0, 0, 3, 3],
+			],
+		},
+		{
+			board: [
+				[0, 3, 2, 1],
+				[0, 5, 3, 5],
+			],
+			direction: "LEFT",
+			expectedBoard: [
+				[3, 3, 0, 0],
+				[5, 8, 0, 0],
+			],
+		},
+		{
+			board: [
+				[0, 0],
+			[3, 5],
+			[2, 3],
+			[1, 5],
+			],
+			direction: "UP",
+			expectedBoard: [
+					[3, 5],
+			[3, 8],
+			[0, 0],
+			[0, 0],
+			],
+		},
+		{
+			board: [[0, 0],
+			[3, 5],
+			[2, 3],
+			[1, 5]],
+			direction: "DOWN",
+			expectedBoard: [[0, 0],
+			[0, 0],
+			[3, 5],
+			[3, 8]]
+		}
+	])(
+		"moves the board $direction and merges the tiles",
+		({ board, direction, expectedBoard }) => {
+			const game = new Board(board);
+
+			game.move(direction as Direction);
+
+			const finalState = game.getState();
+			expect(finalState).toEqual(expectedBoard);
+		},
+	);
+	
+
+});
+
+describe("Rule #3.2 A fused number can not be fused once again in the same turn.", () => {
+
+	// ??? 
 });
