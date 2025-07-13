@@ -201,33 +201,70 @@ describe("Rule set!", () => {
 		// ???
 	});
 
-	// describe("Rule #4: Numbers can move to a square that a fusing has just emptied.", () => {
-	// it("moves the board RIGHT and merges the tiles", () => {
-	// 		const board = [
-	// 			[1, 1, 1, 1],
-	// 			[1, 0, 3, 5]
+	describe("Rule #4: Numbers can move to a square that a fusing has just emptied.", () => {
+		it.each([
+			{
+				board: [
+					[1, 1, 1, 1],
+					[1, 0, 3, 5],
+				],
+				direction: "RIGHT",
+				expectedBoard: [
+					[0, 0, 2, 2],
+					[0, 0, 1, 8],
+				],
+			},
+			{
+				board: [
+					[1, 1, 1, 1],
+					[1, 0, 3, 5],
+				],
+				direction: "LEFT",
+				expectedBoard: [
+					[2, 2, 0, 0],
+					[1, 8, 0, 0],
+				],
+			},
+			{
+				board: [
+					[1], 
+					[1], 
+					[2], 
+					[3]
+				],
+				direction: "UP",
+				expectedBoard: [
+					[2], 
+					[5], 
+					[0], 
+					[0]
+				],
+			},
+				{
+				board: [
+					[1], 
+					[1], 
+					[2], 
+					[3]
+				],
+				direction: "DOWN",
+				expectedBoard: [
+					[0], 
+					[0], 
+					[2], 
+					[5]
+				],
+			},
+		])(
+			"moves the board $direction and merges the tiles",
+			({ board, direction, expectedBoard }) => {
+				const game = new Board(board);
 
-	// 		];
-	// 		// . . . .
-	// 		// 1 1 1 1
-	// 	    //  2  1 1 0
+				game.move(direction as Direction);
 
-	// 		// [3, 0, 3, 5]
-	// 		// 5 3 0 3
-	// 		// 8 0 3 0
-
-	// 		const expectedBoard = [
-	// 			[0, 0, 2, 2],
-	// 			[0, 0, 1, 8]
-	// 		];
-
-	// 		const game = new Board(board);
-
-	// 		game.move("RIGHT");
-
-	// 		const finalState = game.getState();
-	// 		expect(finalState).toEqual(expectedBoard);
-	// 	});
-	// 	// ???
-	// });
+				const finalState = game.getState();
+				expect(finalState).toEqual(expectedBoard);
+			},
+		);
+	});
 });

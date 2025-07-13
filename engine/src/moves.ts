@@ -46,25 +46,4 @@ const mergeTiles = (subline: number[]): number[] => {
 	return merged.filter((n) => n !== 0).reverse();
 };
 
-const mergeTilesv0 = (subline: number[]): number[] => {
-	const merged = [];
-	const reversedLine = [...subline].reverse();
-
-	const lineSize = subline.length;
-	const isFused: boolean[] = new Array(lineSize).fill(false);
-
-	for (let i = 1; i < reversedLine.length; i++) {
-		if (!isFused[i] && !isFused[i - 1]) {
-			if (areConsecutiveInFibSequence(reversedLine[i], reversedLine[i - 1])) {
-				merged.push(reversedLine[i] + reversedLine[i - 1]);
-				isFused[i] = true;
-				isFused[i - 1] = true;
-			}
-		} else {
-			merged.push(reversedLine[i]);
-		}
-	}
-	return merged.reverse();
-};
-
 export { leftPadWithZeros, rightPadWithZeros };
