@@ -7,9 +7,13 @@ class Board {
 	private nrows: number;
 
 	constructor(gameArea: number[][]) {
-		this.gameArea = gameArea;
-		this.ncols = gameArea[0].length;
-		this.nrows = gameArea.length;
+
+
+			this.ncols = gameArea[0].length;
+			this.nrows = gameArea.length;
+
+			if (this.ncols !== this.nrows) throw new Error("The Board needs to be squared!")
+			this.gameArea = gameArea;
 	}
 
 	getState(): number[][] {
