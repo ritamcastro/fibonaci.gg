@@ -215,10 +215,28 @@ describe("Rule set!", () => {
 	});
 
 	describe("Rule #3.2 A fused number can not be fused once again in the same turn.", () => {
-		it("needs to done", () => {
-			expect(true).toBe(true);
+		it("moves the board", () => {
+			const board = [
+				[1, 2, 3, 5],
+				[0, 3, 2, 1],
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+			];
+			const direction = "RIGHT";
+			const expectedBoard = [
+				[0, 0, 3, 8],
+				[0, 0, 3, 3],
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+			];
+
+			const game = new Board(board);
+
+			game.move(direction as Direction);
+
+			const finalState = game.getState();
+			expect(finalState).toEqual(expectedBoard);
 		});
-		// ???
 	});
 
 	describe("Rule #4: Numbers can move to a square that a fusing has just emptied.", () => {
@@ -294,5 +312,30 @@ describe("Rule set!", () => {
 				expect(finalState).toEqual(expectedBoard);
 			},
 		);
+	});
+
+	describe("Rule #5: New tiles are added", () => {
+		it("Adds a new tile with the start of the sequence when at least two tiless are merged", () => {
+			const boardHorizontal = [
+				[0, 2, 0, 5],
+				[0, 21, 0, 55],
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+			];
+			const direction = "RIGHT";
+			const expectedBoard = [
+				[0, 0, 2, 5],
+				[0, 0, 21, 55],
+				[0, 1, 0, 0],
+				[0, 0, 0, 0],
+			];
+
+			const game = new Board(boardHorizontal);
+
+			game.move(direction as Direction);
+
+			const finalState = game.getState();
+			expect(finalState).toEqual(expectedBoard);
+		});
 	});
 });
