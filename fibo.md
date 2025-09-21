@@ -80,3 +80,7 @@ Numbers can move to a square that a fusing has just emptied.
 
 Let’s hype!
 
+- [] consider moving `moves.test.ts` to a rules test
+- [] add tile with new number randomly - figure out how to test?
+- [] add mechanism to start the game and get inputs from awsd
+-
