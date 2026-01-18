@@ -6,7 +6,8 @@
 		},
 		{
 			"path": "engine"
-		}
+		}, 
+		{"path": "frontend"}
 	],
 	"settings": {
 		"vitest.shellType": "terminal",
