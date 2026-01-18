@@ -1,16 +1,18 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router";
+import Homepage from "./ui/pages/homepage";
+import Layout from "./ui/templates/layout";
 
 const Main = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <div>ola</div>,
+			element: <Layout />,
 			children: [
 				{
 					index: true,
-					element: <div>ola</div>,
+					element: <Homepage />,
 				},
 			],
 		},
