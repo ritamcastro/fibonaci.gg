@@ -1,0 +1,26 @@
+import Homepage from "./ui/pages/homepage";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
+describe("The game", () => {
+	it("renders the empty board, clicks the button generates new tiles", async () => {
+		const user = userEvent.setup();
+
+		render(<Homepage />);
+
+		expect(
+			screen.getByRole("region", { name: "Game board" }),
+		).toBeInTheDocument();
+		const tiles = screen.getAllByRole("gridcell");
+
+		expect(tiles).toHaveLength(16);
+		for (const tile of tiles) {
+			expect(tile).toHaveValue("");
+		}
+
+		const newGameButton = screen.getByRole("button", { name: "New Game" });
+		await user.click(newGameButton);
+
+		// expect(screen.getAllByText("2")).toHaveLength(2);
+	});
+});
