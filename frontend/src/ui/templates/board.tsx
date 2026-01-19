@@ -1,21 +1,14 @@
-const Board = () => {
+const Board = ({ gameArea }: { gameArea: number[][] }) => {
 	// const ncols: number = 4;
 	// const nrows: number = 4;
 
-	const gameArea: number[][] = [
-		[2, 1, 2048, 0],
-		[5, 3, 0, 0],
-		[0, 8, 0, 0],
-		[0, 21, 0, 0],
-	];
-
 	return (
-		<div>
+		<section aria-label="Game board">
 			{gameArea.map((row, rowIndex) => {
 				// return <p key={index}>{row}</p>;
 				return <Line row={rowIndex}>{row}</Line>;
 			})}
-		</div>
+		</section>
 	);
 };
 
@@ -31,7 +24,10 @@ const Line = ({ row, children }: { row: number; children: number[] }) => {
 
 const Square = ({ children }: { children: number }) => {
 	return (
+		// biome-ignore lint/a11y/useFocusableInteractive: <explanation>
 		<span
+			// biome-ignore lint/a11y/useSemanticElements: <explanation>
+			role="gridcell"
 			style={{
 				display: "flex",
 				border: "solid 2px purple",
@@ -41,7 +37,7 @@ const Square = ({ children }: { children: number }) => {
 				alignItems: "center",
 			}}
 		>
-			{children}
+			{children === 0 ? "" : children}
 		</span>
 	);
 };
