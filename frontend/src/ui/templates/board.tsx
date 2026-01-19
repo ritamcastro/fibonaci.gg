@@ -1,12 +1,13 @@
 const Board = ({ gameArea }: { gameArea: number[][] }) => {
-	// const ncols: number = 4;
-	// const nrows: number = 4;
-
 	return (
 		<section aria-label="Game board">
 			{gameArea.map((row, rowIndex) => {
 				// return <p key={index}>{row}</p>;
-				return <Line row={rowIndex}>{row}</Line>;
+				return (
+					<Line key={rowIndex} row={rowIndex}>
+						{row}
+					</Line>
+				);
 			})}
 		</section>
 	);

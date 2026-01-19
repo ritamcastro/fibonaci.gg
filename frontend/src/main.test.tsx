@@ -14,13 +14,14 @@ describe("The game", () => {
 		const tiles = screen.getAllByRole("gridcell");
 
 		expect(tiles).toHaveLength(16);
+
 		for (const tile of tiles) {
-			expect(tile).toHaveValue("");
+			expect(tile).toBeEmptyDOMElement();
 		}
 
-		const newGameButton = screen.getByRole("button", { name: "New Game" });
+		const newGameButton = screen.getByRole("button", { name: "New game" });
 		await user.click(newGameButton);
 
-		// expect(screen.getAllByText("2")).toHaveLength(2);
+		expect(screen.getAllByText("2")).toHaveLength(2);
 	});
 });
