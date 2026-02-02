@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("The game", () => {
-	it("renders the empty board, clicks the button generates new tiles", async () => {
+	it("renders the empty board, clicks the button generates new tiles and moves the board", async () => {
 		const user = userEvent.setup();
 
 		render(<Homepage />);
@@ -23,5 +23,8 @@ describe("The game", () => {
 		await user.click(newGameButton);
 
 		expect(screen.getAllByText("1")).toHaveLength(2);
+
+		await user.keyboard("ArrowRight")
+		
 	});
 });
