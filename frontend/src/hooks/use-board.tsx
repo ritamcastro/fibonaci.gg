@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { getRandomPosition } from "../utils/math";
 import type { Direction } from "../constants";
-import { applyMove } from "../utils/moves";
+import { getRandomPosition } from "../utils/math";
+import { applyMove } from "../gameplay/moves";
 
 const useBoard = () => {
 	const initialSequenceValue = 1;

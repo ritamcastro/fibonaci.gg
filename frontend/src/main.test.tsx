@@ -1,6 +1,6 @@
-import Homepage from "./ui/pages/homepage";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import Homepage from "./ui/pages/homepage";
 
 describe("The game", () => {
 	it("renders the empty board, clicks the button generates new tiles and moves the board", async () => {
@@ -24,7 +24,6 @@ describe("The game", () => {
 
 		expect(screen.getAllByText("1")).toHaveLength(2);
 
-		await user.keyboard("ArrowRight")
-		
+		await user.keyboard("ArrowRight");
 	});
 });

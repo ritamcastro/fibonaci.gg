@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import useKeyboard from "./use-keyboard";
 
 describe("useKeyboard", () => {
@@ -69,7 +69,7 @@ describe("useKeyboard", () => {
 		renderHook(() => useKeyboard(mockOnMove));
 
 		const event = new KeyboardEvent("keydown", {
-			key: "ArrowUp", 
+			key: "ArrowUp",
 			cancelable: true,
 		});
 		const preventDefaultSpy = vi.spyOn(event, "preventDefault");

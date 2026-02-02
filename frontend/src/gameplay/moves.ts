@@ -1,6 +1,5 @@
 import type { Direction } from "../constants";
 
-
 /**
  * Moves tiles to the left by padding with zeros on the right
  * Example: [0, 1, 0, 2] -> [1, 2, 0, 0]
@@ -9,7 +8,7 @@ const leftPadWithZeros = (line: number[]): number[] => {
 	const zeros = line.filter((n) => n === 0);
 	const nonZeros = line.filter((n) => n !== 0);
 
-	return  [...zeros, ...nonZeros]
+	return [...zeros, ...nonZeros];
 };
 
 /**
@@ -20,12 +19,11 @@ const rightPadWithZeros = (line: number[]): number[] => {
 	const zeros = line.filter((n) => n === 0);
 	const nonZeros = line.filter((n) => n !== 0);
 
-	return  [...nonZeros, ...zeros]
+	return [...nonZeros, ...zeros];
 };
 
 const applyMove = (board: number[][], direction: Direction) => {
-
-    const nrows = board.length;
+	const nrows = board.length;
 	// const ncols = board[0].length;
 	const newBoard = board.map((row) => [...row]); // Deep copy
 
@@ -39,8 +37,8 @@ const applyMove = (board: number[][], direction: Direction) => {
 			newBoard[row] = movedRow;
 		}
 	}
-    
-    return newBoard
+
+	return newBoard;
 };
 
 export { applyMove };

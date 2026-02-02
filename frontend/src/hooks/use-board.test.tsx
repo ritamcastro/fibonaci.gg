@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
-import useBoard from "./use-board";
 import { getRandomPosition } from "../utils/math";
+import useBoard from "./use-board";
 
 // vi.mock(
 // 	"../../../../contexts/fba-upload-data-metrics-context",
@@ -78,5 +78,5 @@ describe("board game dynamics", () => {
 			[0, 0, 0, 1],
 			[0, 0, 0, 0],
 		]);
-	})
+	});
 });
