@@ -59,4 +59,24 @@ describe("board game dynamics", () => {
 			[0, 0, 0, 0],
 		]);
 	});
+
+	it("moves the board to the RIGHT", () => {
+		vi.mocked(getRandomPosition)
+			.mockReturnValueOnce(1)
+			.mockReturnValueOnce(2)
+			.mockReturnValueOnce(1)
+			.mockReturnValueOnce(2);
+
+		const { result } = renderHook(() => useBoard());
+
+		act(() => result.current.newBoard());
+		act(() => result.current.move("RIGHT"));
+
+		expect(result.current.board).toEqual([
+			[0, 0, 0, 0],
+			[0, 0, 0, 1],
+			[0, 0, 0, 1],
+			[0, 0, 0, 0],
+		]);
+	})
 });

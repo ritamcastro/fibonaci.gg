@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getRandomPosition } from "../utils/math";
-
-type Direction = "LEFT" | "RIGHT" | "UP" | "DOWN";
+import type { Direction } from "../constants";
+import { applyMove } from "../utils/moves";
 
 const useBoard = () => {
 	const initialSequenceValue = 1;
@@ -37,7 +37,10 @@ const useBoard = () => {
 		setBoard(updatedBoard);
 	};
 
-	return { board, newBoard };
+	const move = (direction: Direction) => {
+		setBoard((currentBoard) => applyMove(currentBoard, direction));
+	};
+	return { board, newBoard, move };
 };
 
 export default useBoard;
