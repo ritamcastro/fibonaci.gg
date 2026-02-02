@@ -24,7 +24,7 @@ const rightPadWithZeros = (line: number[]): number[] => {
 
 const applyMove = (board: number[][], direction: Direction) => {
 	const nrows = board.length;
-	// const ncols = board[0].length;
+	const ncols = board[0].length;
 	const newBoard = board.map((row) => [...row]); // Deep copy
 
 	if (direction === "RIGHT" || direction === "LEFT") {
@@ -35,6 +35,24 @@ const applyMove = (board: number[][], direction: Direction) => {
 					? leftPadWithZeros(newBoard[row])
 					: rightPadWithZeros(newBoard[row]);
 			newBoard[row] = movedRow;
+		}
+	}
+	if (direction === "UP" || direction === "DOWN") {
+		// Process each column
+		for (let col = 0; col < ncols; col++) {
+			const column: number[] = [];
+			for (let row = 0; row < nrows; row++) {
+				column.push(newBoard[row][col]);
+			}
+
+			const movedCol =
+				direction === "UP"
+					? rightPadWithZeros(column)
+					: leftPadWithZeros(column);
+
+			for (let row = 0; row < nrows; row++) {
+				newBoard[row][col] = movedCol[row];
+			}
 		}
 	}
 
