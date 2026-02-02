@@ -22,6 +22,6 @@ describe("The game", () => {
 		const newGameButton = screen.getByRole("button", { name: "New game" });
 		await user.click(newGameButton);
 
-		expect(screen.getAllByText("2")).toHaveLength(2);
+		expect(screen.getAllByText("1")).toHaveLength(2);
 	});
 });

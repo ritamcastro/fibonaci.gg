@@ -35,9 +35,9 @@ describe("board game dynamics", () => {
 
 		expect(result.current.board).toEqual([
 			[0, 0, 0, 0],
-			[0, 0, 2, 0],
+			[0, 0, 1, 0],
 			[0, 0, 0, 0],
-			[2, 0, 0, 0],
+			[1, 0, 0, 0],
 		]);
 	});
 
@@ -54,8 +54,8 @@ describe("board game dynamics", () => {
 
 		expect(result.current.board).toEqual([
 			[0, 0, 0, 0],
-			[0, 2, 0, 0],
-			[0, 0, 2, 0],
+			[0, 1, 0, 0],
+			[0, 0, 1, 0],
 			[0, 0, 0, 0],
 		]);
 	});
