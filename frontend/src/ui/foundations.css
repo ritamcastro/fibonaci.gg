@@ -34,6 +34,10 @@
 header {
 	padding: var(--space-l);
 	font-size: var(--font-size-large);
+
+	h1 {
+		font-size: var(--font-size-large);
+	}
 }
 
 footer {

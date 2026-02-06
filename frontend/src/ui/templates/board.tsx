@@ -2,7 +2,8 @@ import "./board.css";
 
 const Board = ({ gameArea }: { gameArea: number[][] }) => {
 	return (
-		<section className="game-area" aria-label="Game board">
+		// biome-ignore lint/a11y/useSemanticElements: I do not want a table, I want a container for my board
+		<div className="game-area" role="grid" aria-label="Game board">
 			{gameArea.map((row, rowIndex) => {
 				return (
 					<Line key={rowIndex} row={rowIndex}>
@@ -10,7 +11,7 @@ const Board = ({ gameArea }: { gameArea: number[][] }) => {
 					</Line>
 				);
 			})}
-		</section>
+		</div>
 	);
 };
 
@@ -25,16 +26,7 @@ const Line = ({ row, children }: { row: number; children: number[] }) => {
 };
 
 const Tile = ({ children }: { children: number }) => {
-	return (
-		// biome-ignore lint/a11y/useFocusableInteractive: <explanation>
-		<span
-			className="tile"
-			// biome-ignore lint/a11y/useSemanticElements: <explanation>
-			role="gridcell"
-		>
-			{children === 0 ? "" : children}
-		</span>
-	);
+	return <span className="tile">{children === 0 ? "" : children}</span>;
 };
 
 export default Board;

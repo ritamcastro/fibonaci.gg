@@ -3,7 +3,6 @@
 
 	border: solid var(--color-gold) var(--border-in-tiles);
 	border-radius: var(--radius-s);
-	/* border-radius: 0.25rem; */
 
 	.line {
 		display: flex;
