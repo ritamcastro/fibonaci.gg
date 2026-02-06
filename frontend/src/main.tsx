@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router";
 import Homepage from "./ui/pages/homepage";
 import Layout from "./ui/templates/layout";
+import "./main.css";
+import "./ui/foundations.css";
 
 const Main = () => {
 	const router = createBrowserRouter([
@@ -25,4 +27,4 @@ const Main = () => {
 	);
 };
 
-createRoot(document.getElementById("root")!).render(<Main />);
+createRoot(document.getElementById("fibo48")!).render(<Main />);

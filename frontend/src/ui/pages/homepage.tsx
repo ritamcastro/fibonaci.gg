@@ -1,6 +1,8 @@
 import useBoard from "../../hooks/use-board";
 import useKeyboard from "../../hooks/use-keyboard";
+import Button from "../atoms/button";
 import Board from "../templates/board";
+import "./homepage.css";
 
 const Homepage = () => {
 	const { board, newBoard, move } = useBoard();
@@ -8,13 +10,13 @@ const Homepage = () => {
 	useKeyboard(move);
 
 	return (
-		<div style={{ border: "solid 1px pink" }}>
-			<button type="button" onClick={() => newBoard()}>
-				New game
-			</button>
+		<section className="homepage">
+			<Button variant="primary" onClick={() => newBoard()}>
+				New Game
+			</Button>
 
 			<Board gameArea={board} />
-		</div>
+		</section>
 	);
 };
 export default Homepage;

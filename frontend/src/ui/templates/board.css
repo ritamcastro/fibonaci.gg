@@ -1,0 +1,29 @@
+.game-area {
+	--border-in-tiles: var(--space-xs);
+
+	border: solid var(--color-gold) var(--border-in-tiles);
+	border-radius: var(--radius-s);
+	/* border-radius: 0.25rem; */
+
+	.line {
+		display: flex;
+		row-gap: var(--space-m);
+	}
+
+	.tile {
+		--tile-size: 4rem;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background-color: var(--color-snow);
+		border: solid var(--color-gold) var(--border-in-tiles);
+		width: var(--tile-size);
+		height: var(--tile-size);
+
+		color: var(--color-midnight-blue);
+		font-weight: bold;
+		font-size: var(--font-size-medium);
+	}
+}

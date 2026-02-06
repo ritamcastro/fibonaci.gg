@@ -1,8 +1,9 @@
+import "./board.css";
+
 const Board = ({ gameArea }: { gameArea: number[][] }) => {
 	return (
-		<section aria-label="Game board">
+		<section className="game-area" aria-label="Game board">
 			{gameArea.map((row, rowIndex) => {
-				// return <p key={index}>{row}</p>;
 				return (
 					<Line key={rowIndex} row={rowIndex}>
 						{row}
@@ -15,28 +16,21 @@ const Board = ({ gameArea }: { gameArea: number[][] }) => {
 
 const Line = ({ row, children }: { row: number; children: number[] }) => {
 	return (
-		<div style={{ display: "flex" }}>
+		<div className="line">
 			{children.map((col, index) => {
-				return <Square key={`${row}x${index}`}>{col}</Square>;
+				return <Tile key={`${row}x${index}`}>{col}</Tile>;
 			})}
 		</div>
 	);
 };
 
-const Square = ({ children }: { children: number }) => {
+const Tile = ({ children }: { children: number }) => {
 	return (
 		// biome-ignore lint/a11y/useFocusableInteractive: <explanation>
 		<span
+			className="tile"
 			// biome-ignore lint/a11y/useSemanticElements: <explanation>
 			role="gridcell"
-			style={{
-				display: "flex",
-				border: "solid 2px purple",
-				width: "48px",
-				height: "48px",
-				justifyContent: "center",
-				alignItems: "center",
-			}}
 		>
 			{children === 0 ? "" : children}
 		</span>
