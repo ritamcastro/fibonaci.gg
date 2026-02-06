@@ -1,5 +1,19 @@
 .game-area {
 	--border-in-tiles: var(--space-xs);
+	/* Fibonacci tile colors - purple/violet gradient */
+	--color-tile-empty: #faf8fc; /* Very light lavender for empty tiles */
+	--color-fib-1: #f5f0f7; /* Very light lavender */
+	--color-fib-2: #e8ddee; /* Light lavender */
+	--color-fib-3: #d9c8e0; /* Soft lavender */
+	--color-fib-5: #c8b3d1; /* Muted purple */
+	--color-fib-8: #b59fc2; /* Soft purple */
+	--color-fib-13: #a28bb3; /* Medium purple */
+	--color-fib-21: #8f77a4; /* Purple */
+	--color-fib-34: #7c6395; /* Deep purple */
+	--color-fib-55: #694f86; /* Darker purple */
+	--color-fib-89: #563b77; /* Deep violet */
+	--color-fib-144: #432768; /* Dark violet */
+	--color-fib-233: #2e1a4a; /* Extra dark violet */
 
 	border: solid var(--color-gold) var(--border-in-tiles);
 	border-radius: var(--radius-s);
@@ -16,7 +30,7 @@
 		justify-content: center;
 		align-items: center;
 
-		background-color: var(--color-snow);
+		background-color: var(--color-tile-empty);
 		border: solid var(--color-gold) var(--border-in-tiles);
 		width: var(--tile-size);
 		height: var(--tile-size);
@@ -24,5 +38,66 @@
 		color: var(--color-midnight-blue);
 		font-weight: bold;
 		font-size: var(--font-size-medium);
+	}
+
+	/* Fibonacci number colors - muted purple/violet gradient */
+	.tile-fib-1 {
+		background-color: var(--color-fib-1);
+		color: var(--color-midnight-blue);
+	}
+
+	.tile-fib-2 {
+		background-color: var(--color-fib-2);
+		color: var(--color-midnight-blue);
+	}
+
+	.tile-fib-3 {
+		background-color: var(--color-fib-3);
+		color: var(--color-midnight-blue);
+	}
+
+	.tile-fib-5 {
+		background-color: var(--color-fib-5);
+		color: var(--color-midnight-blue);
+	}
+
+	.tile-fib-8 {
+		background-color: var(--color-fib-8);
+		color: var(--color-snow);
+	}
+
+	.tile-fib-13 {
+		background-color: var(--color-fib-13);
+		color: var(--color-snow);
+	}
+
+	.tile-fib-21 {
+		background-color: var(--color-fib-21);
+		color: var(--color-snow);
+	}
+
+	.tile-fib-34 {
+		background-color: var(--color-fib-34);
+		color: var(--color-snow);
+	}
+
+	.tile-fib-55 {
+		background-color: var(--color-fib-55);
+		color: var(--color-snow);
+	}
+
+	.tile-fib-89 {
+		background-color: var(--color-fib-89);
+		color: var(--color-snow);
+	}
+
+	.tile-fib-144 {
+		background-color: var(--color-fib-144);
+		color: var(--color-snow);
+	}
+
+	.tile-fib-233 {
+		background-color: var(--color-fib-233);
+		color: var(--color-snow);
 	}
 }
