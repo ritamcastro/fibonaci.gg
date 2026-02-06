@@ -1,5 +1,6 @@
 import type { Direction } from "../constants";
-import { areConsecutiveInFibSequence } from "../utils/fibonacci";
+import { areConsecutiveInFibSequence } from "./fibonacci";
+import { getInitialTile, getPositionForEmptyTile } from "./tile-utils";
 
 const mergeTiles = (subline: number[]): number[] => {
 	const lineSize = subline.length;
@@ -111,28 +112,12 @@ const applyMove = (board: number[][], direction: Direction) => {
 	}
 
 	if (merged) {
-		const emptyTile = getPositionForEmptyTile(newBoard);
+		const tile = getPositionForEmptyTile(newBoard);
 
-		newBoard[emptyTile[0]][emptyTile[1]] = 1;
+		newBoard[tile.row][tile.col] = getInitialTile();
 	}
 
 	return newBoard;
-};
-
-const getPositionForEmptyTile = (board: number[][]) => {
-	const emptyPositions: number[][] = [];
-
-	for (let row = 0; row < board.length; row++) {
-		for (let col = 0; col < board[row].length; col++) {
-			if (board[row][col] === 0) {
-				const pos = [row, col];
-				emptyPositions.push(pos);
-			}
-		}
-	}
-
-	const index = Math.ceil(Math.random() * emptyPositions.length) - 1;
-	return emptyPositions[index];
 };
 
 export { applyMove };

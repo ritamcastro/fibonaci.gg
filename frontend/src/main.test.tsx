@@ -9,7 +9,7 @@ describe("The game", () => {
 		render(<Homepage />);
 
 		expect(
-			screen.getByRole("region", { name: "Game board" }),
+			screen.getByRole("grid", { name: "Game board" }),
 		).toBeInTheDocument();
 		const tiles = screen.getAllByRole("gridcell");
 
@@ -19,7 +19,7 @@ describe("The game", () => {
 			expect(tile).toBeEmptyDOMElement();
 		}
 
-		const newGameButton = screen.getByRole("button", { name: "New game" });
+		const newGameButton = screen.getByRole("button", { name: "New Game" });
 		await user.click(newGameButton);
 
 		expect(screen.getAllByText("1")).toHaveLength(2);

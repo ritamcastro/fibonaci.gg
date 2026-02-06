@@ -26,7 +26,13 @@ const Line = ({ row, children }: { row: number; children: number[] }) => {
 };
 
 const Tile = ({ children }: { children: number }) => {
-	return <span className="tile">{children === 0 ? "" : children}</span>;
+	return (
+		// biome-ignore lint/a11y/useSemanticElements: I need to have the gridcells indexed so that I can count them
+		// biome-ignore lint/a11y/useFocusableInteractive: For now, I am ok with it not being interactive
+		<span role="gridcell" className="tile">
+			{children === 0 ? "" : children}
+		</span>
+	);
 };
 
 export default Board;

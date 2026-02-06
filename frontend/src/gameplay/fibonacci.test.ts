@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { areConsecutiveInFibSequence } from "./fibonacci";
-
 // value: 0 1 1 2 3 5 8
 // index: 0 1 2 3 4 5 6
 
