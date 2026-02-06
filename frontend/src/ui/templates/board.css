@@ -24,7 +24,7 @@
 	}
 
 	.tile {
-		--tile-size: 4rem;
+		--tile-size: 5.5rem;
 
 		display: flex;
 		justify-content: center;
@@ -37,7 +37,22 @@
 
 		color: var(--color-midnight-blue);
 		font-weight: bold;
-		font-size: var(--font-size-medium);
+		font-size: var(--font-size-large);
+	}
+
+	/* Responsive design for mobile devices */
+	@media (max-width: 768px) {
+		.tile {
+			--tile-size: 4.5rem;
+			font-size: var(--font-size-medium);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.tile {
+			--tile-size: 3.5rem;
+			font-size: var(--font-size-medium);
+		}
 	}
 
 	/* Fibonacci number colors - muted purple/violet gradient */

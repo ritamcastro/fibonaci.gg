@@ -7,7 +7,7 @@
 	border-radius: var(--radius-m);
 	border: 0 solid transparent;
 
-	font-size: var(--font-size-md);
+	font-size: var(--font-size-small);
 	font-weight: bold;
 
 	background-color: var(--color-gold);

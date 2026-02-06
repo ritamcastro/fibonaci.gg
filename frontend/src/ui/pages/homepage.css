@@ -5,9 +5,40 @@
 	gap: var(--space-l);
 
 	.instructions {
-		width: 75%;
+		width: 60%;
 		text-align: center;
-		line-height: var(--space-l);
+		line-height: var(--space-xl);
 		margin: 0 var(--space-l);
+		font-size: var(--font-size-medium);
+	}
+
+	.game-area {
+		margin-top: var(--space-l);
+	}
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+	.homepage {
+		gap: var(--space-m);
+
+		.instructions {
+			width: 75%;
+			margin: 0 var(--space-m);
+			font-size: var(--font-size-medium);
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.homepage {
+		gap: var(--space-m);
+
+		.instructions {
+			width: 75%;
+			line-height: var(--space-m);
+			margin: 0 var(--space-small);
+			font-size: var(--font-size-small);
+		}
 	}
 }

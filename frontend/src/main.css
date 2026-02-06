@@ -17,4 +17,26 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	min-height: 100vh;
+}
+
+/* Responsive design for mobile devices */
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+	html,
+	body {
+		overflow-x: hidden;
+	}
+
+	#main {
+		width: 100%;
+		padding: 0 var(--space-s);
+	}
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+	#main {
+		padding: 0 var(--space-xs);
+	}
 }
