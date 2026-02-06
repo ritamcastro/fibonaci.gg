@@ -1,0 +1,24 @@
+a {
+	color: var(--color-gold);
+	text-decoration: none;
+	transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+	color: var(--color-gold-light);
+	text-decoration: underline;
+}
+
+a:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 var(--space-xs) var(--color-gold);
+	border-radius: var(--radius-s);
+}
+
+a:visited {
+	color: var(--color-gold-strong);
+}
+
+a:visited:hover {
+	color: var(--color-gold-light);
+}

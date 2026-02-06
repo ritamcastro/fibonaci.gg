@@ -3,4 +3,11 @@
 	flex-direction: column;
 	align-items: center;
 	gap: var(--space-l);
+
+	.instructions {
+		width: 75%;
+		text-align: center;
+		line-height: var(--space-l);
+		margin: 0 var(--space-l);
+	}
 }
