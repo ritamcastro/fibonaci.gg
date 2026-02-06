@@ -25,10 +25,27 @@
 	--radius-m: 0.5rem;
 	--radius-l: 0.75rem;
 
+	--font-sans: "Roboto", system-ui, sans-serif;
+
 	--font-size-small: 1rem;
 	--font-size-medium: 1.5rem;
 	--font-size-large: 2rem;
 	--font-size-extra: 2.5rem;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("/fonts/roboto-regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("/fonts/roboto-medium.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("/fonts/roboto-bold.woff2") format("woff2");
 }
 
 header {
