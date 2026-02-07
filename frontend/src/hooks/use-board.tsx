@@ -33,6 +33,14 @@ const useBoard = ({
 			updatedBoard[secondTile.row][secondTile.col] = initialSequenceValue;
 		}
 		setBoard(updatedBoard);
+
+		// // Create a board that is game over!
+		// setBoard([
+		// 	[1, 3, 3, 3],
+		// 	[3, 3, 3, 3],
+		// 	[3, 3, 3, 3],
+		// 	[8, 8, 8, 8],
+		// ]);
 	};
 
 	const move = (direction: Direction) => {

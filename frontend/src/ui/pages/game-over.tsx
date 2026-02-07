@@ -1,5 +1,6 @@
 import Modal from "../templates/modal";
 import Button from "../atoms/button";
+import tilesPyramid from "../../assets/game-over.svg";
 
 const GameOver = ({ onClose }: { onClose: () => void }) => {
 	return (
@@ -13,6 +14,11 @@ const GameOver = ({ onClose }: { onClose: () => void }) => {
 				</Button>
 			}
 		>
+			<img
+				src={tilesPyramid}
+				aria-label="Tiles piled up in a messy way."
+				style={{ width: "50%" }}
+			/>
 			No more moves available... <br /> Better luck next time!
 		</Modal>
 	);

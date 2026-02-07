@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" version="1.1">
+  <defs>
+    <filter id="tileShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0b0f2a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- disorganized pyramid of Fibonacci tiles (max value 55) -->
+  <g filter="url(#tileShadow)"
+     font-family="Roboto, sans-serif"
+     font-weight="700"
+     text-anchor="middle"
+     dominant-baseline="middle">
+
+    <!-- bottom layer -->
+    <g transform="translate(150 640) rotate(-10)">
+      <rect x="-76" y="-76" width="152" height="152" rx="22" fill="#6f63b6"/>
+      <text x="0" y="6" font-size="78" fill="#ffffff">55</text>
+    </g>
+    <g transform="translate(290 660) rotate(7)">
+      <rect x="-74" y="-74" width="148" height="148" rx="21" fill="#8f78c9"/>
+      <text x="0" y="5" font-size="74" fill="#ffffff">34</text>
+    </g>
+    <g transform="translate(430 645) rotate(-3)">
+      <rect x="-72" y="-72" width="144" height="144" rx="20" fill="#c9c0e3"/>
+      <text x="0" y="4" font-size="72" fill="#2c3165">21</text>
+    </g>
+    <g transform="translate(565 665) rotate(11)">
+      <rect x="-70" y="-70" width="140" height="140" rx="20" fill="#8f78c9"/>
+      <text x="0" y="4" font-size="72" fill="#ffffff">13</text>
+    </g>
+    <g transform="translate(690 640) rotate(-6)">
+      <rect x="-68" y="-68" width="136" height="136" rx="19" fill="#c9c0e3"/>
+      <text x="0" y="4" font-size="70" fill="#2c3165">34</text>
+    </g>
+    <g transform="translate(60 675) rotate(14)">
+      <rect x="-62" y="-62" width="124" height="124" rx="18" fill="#8f78c9"/>
+      <text x="0" y="3" font-size="64" fill="#ffffff">21</text>
+    </g>
+
+    <!-- layer 2 -->
+    <g transform="translate(200 520) rotate(8)">
+      <rect x="-70" y="-70" width="140" height="140" rx="20" fill="#8f78c9"/>
+      <text x="0" y="4" font-size="72" fill="#ffffff">21</text>
+    </g>
+    <g transform="translate(335 535) rotate(-12)">
+      <rect x="-66" y="-66" width="132" height="132" rx="19" fill="#c9c0e3"/>
+      <text x="0" y="4" font-size="70" fill="#2c3165">13</text>
+    </g>
+    <g transform="translate(470 520) rotate(4)">
+      <rect x="-64" y="-64" width="128" height="128" rx="18" fill="#6f63b6"/>
+      <text x="0" y="4" font-size="68" fill="#ffffff">8</text>
+    </g>
+    <g transform="translate(600 540) rotate(-2)">
+      <rect x="-66" y="-66" width="132" height="132" rx="19" fill="#8f78c9"/>
+      <text x="0" y="4" font-size="70" fill="#ffffff">13</text>
+    </g>
+    <g transform="translate(720 525) rotate(13)">
+      <rect x="-60" y="-60" width="120" height="120" rx="18" fill="#c9c0e3"/>
+      <text x="0" y="3" font-size="62" fill="#2c3165">8</text>
+    </g>
+
+    <!-- layer 3 -->
+    <g transform="translate(255 410) rotate(-6)">
+      <rect x="-62" y="-62" width="124" height="124" rx="18" fill="#c9c0e3"/>
+      <text x="0" y="3" font-size="64" fill="#2c3165">13</text>
+    </g>
+    <g transform="translate(390 400) rotate(10)">
+      <rect x="-60" y="-60" width="120" height="120" rx="18" fill="#8f78c9"/>
+      <text x="0" y="3" font-size="62" fill="#ffffff">8</text>
+    </g>
+    <g transform="translate(520 410) rotate(-14)">
+      <rect x="-58" y="-58" width="116" height="116" rx="17" fill="#c9c0e3"/>
+      <text x="0" y="3" font-size="60" fill="#2c3165">5</text>
+    </g>
+    <g transform="translate(650 395) rotate(6)">
+      <rect x="-60" y="-60" width="120" height="120" rx="18" fill="#6f63b6"/>
+      <text x="0" y="3" font-size="62" fill="#ffffff">21</text>
+    </g>
+
+    <!-- layer 4 -->
+    <g transform="translate(330 285) rotate(12)">
+      <rect x="-56" y="-56" width="112" height="112" rx="16" fill="#8f78c9"/>
+      <text x="0" y="3" font-size="58" fill="#ffffff">5</text>
+    </g>
+    <g transform="translate(460 275) rotate(-9)">
+      <rect x="-54" y="-54" width="108" height="108" rx="16" fill="#c9c0e3"/>
+      <text x="0" y="3" font-size="56" fill="#2c3165">3</text>
+    </g>
+    <g transform="translate(585 295) rotate(3)">
+      <rect x="-56" y="-56" width="112" height="112" rx="16" fill="#6f63b6"/>
+      <text x="0" y="3" font-size="58" fill="#ffffff">8</text>
+    </g>
+
+    <!-- top clutter -->
+    <g transform="translate(420 165) rotate(-16)">
+      <rect x="-50" y="-50" width="100" height="100" rx="15" fill="#c9c0e3"/>
+      <text x="0" y="3" font-size="52" fill="#2c3165">2</text>
+    </g>
+    <g transform="translate(520 185) rotate(14)">
+      <rect x="-50" y="-50" width="100" height="100" rx="15" fill="#8f78c9"/>
+      <text x="0" y="3" font-size="52" fill="#ffffff">3</text>
+    </g>
+    <g transform="translate(470 115) rotate(8)">
+      <rect x="-46" y="-46" width="92" height="92" rx="14" fill="#6f63b6"/>
+      <text x="0" y="3" font-size="48" fill="#ffffff">1</text>
+    </g>
+
+  </g>
+</svg>
