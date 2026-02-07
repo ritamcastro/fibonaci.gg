@@ -5,12 +5,18 @@ import Homepage from "./ui/pages/homepage";
 import Layout from "./ui/templates/layout";
 import "./main.css";
 import "./ui/foundations.css";
+import GenericError from "./ui/pages/generic-error";
 
 const Main = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/",
 			element: <Layout />,
+			errorElement: (
+				<Layout>
+					<GenericError />
+				</Layout>
+			),
 			children: [
 				{
 					index: true,
