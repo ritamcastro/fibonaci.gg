@@ -1,5 +1,22 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="chevron-up">
-<path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M4.8125 15.3906L4.18781 14.6098L11.6878 8.60976C11.8443 8.48454 12.0573 8.46665 12.23 8.55609L12.3125 8.60976L19.8125 14.6098L19.1878 15.3906L12.0002 9.64119L4.8125 15.3906Z" fill="#008075"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="440" height="440"
+     viewBox="286 403 280 280"
+     version="1.1">
+  <g transform="translate(-140 460) scale(0.6)">
+    <path d="M 845.0 195.0
+             A 5.0 5.0 0 0 0 850.0 200.0
+             A 10.0 10.0 0 0 0 840.0 210.0
+             A 15.0 15.0 0 0 0 825.0 195.0
+             A 25.0 25.0 0 0 0 850.0 170.0
+             A 40.0 40.0 0 0 0 890.0 210.0
+             A 65.0 65.0 0 0 0 825.0 275.0
+             A 105.0 105.0 0 0 0 720.0 170.0
+             A 170.0 170.0 0 0 0 890.0 0.0
+             A 275.0 275.0 0 0 0 1165.0 275.0"
+          fill="none"
+          stroke="#daa425"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
 </svg>

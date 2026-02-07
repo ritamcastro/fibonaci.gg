@@ -55,6 +55,10 @@ header {
 	h1 {
 		font-size: var(--font-size-large);
 	}
+
+	img {
+		width: 50vw;
+	}
 }
 
 footer {
@@ -81,6 +85,9 @@ footer {
 		h1 {
 			font-size: var(--font-size-medium);
 		}
+		img {
+			width: 75vw;
+		}
 	}
 
 	footer {
@@ -103,6 +110,10 @@ footer {
 
 		h1 {
 			font-size: var(--font-size-medium);
+		}
+
+		img {
+			width: 75vw;
 		}
 	}
 
