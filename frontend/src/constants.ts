@@ -1,3 +1,5 @@
-type Direction = "LEFT" | "RIGHT" | "UP" | "DOWN";
+const Directions = ["LEFT", "RIGHT", "UP", "DOWN"] as const;
+type Direction = (typeof Directions)[number];
 
 export type { Direction };
+export { Directions };

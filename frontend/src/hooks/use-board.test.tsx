@@ -4,12 +4,17 @@ import {
 	getPositionForEmptyTile,
 	getTilePosition,
 } from "../gameplay/tile-utils";
+import { Directions } from "../constants";
 
-vi.mock("../gameplay/tile-utils", () => ({
-	getTilePosition: vi.fn(),
-	getPositionForEmptyTile: vi.fn(),
-	getInitialTile: vi.fn().mockReturnValue(1),
-}));
+vi.mock("../gameplay/tile-utils", async (importOriginal) => {
+	const mod: object = await importOriginal();
+	return {
+		...mod,
+		getTilePosition: vi.fn(),
+		getPositionForEmptyTile: vi.fn(),
+		getInitialTile: vi.fn().mockReturnValue(1),
+	};
+});
 
 describe("board game dynamics", () => {
 	it("creates an new board", () => {
@@ -70,5 +75,49 @@ describe("board game dynamics", () => {
 			[0, 0, 0, 1],
 			[0, 0, 0, 0],
 		]);
+	});
+
+	it("calls game over when we can't merge any tiles", () => {
+		const seed = [
+			[1, 3, 3, 3],
+			[3, 3, 3, 3],
+			[3, 3, 3, 3],
+			[8, 8, 8, 8],
+		];
+		const { result } = renderHook(() => useBoard({ seed }));
+
+		for (const dir of Directions) {
+			expect(() => {
+				act(() => result.current.move(dir));
+			}).toThrow("Game Over.");
+		}
+	});
+
+	it("doesnt call game over when the board is filled by we can still merge some tiles", () => {
+		//It doesn't matter what we return, we wont move anything with this
+		vi.mocked(getPositionForEmptyTile).mockReturnValue({ row: 3, col: 0 });
+
+		const completeBoard = [
+			[1, 3, 3, 3],
+			[1, 3, 3, 3],
+			[3, 3, 3, 3],
+			[8, 8, 8, 8],
+		];
+
+		const { result } = renderHook(() => useBoard({ seed: completeBoard }));
+
+		// Directions that don't move
+		act(() => result.current.move("LEFT"));
+		expect(result.current.board).toEqual(completeBoard);
+
+		act(() => result.current.move("RIGHT"));
+		expect(result.current.board).toEqual(completeBoard);
+
+		// Directions that can merge
+		act(() => result.current.move("UP"));
+		expect(result.current.board).toEqual(completeBoard);
+
+		act(() => result.current.move("DOWN"));
+		expect(result.current.board).toEqual(completeBoard);
 	});
 });

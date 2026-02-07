@@ -1,17 +1,20 @@
 import { useState } from "react";
 import type { Direction } from "../constants";
+import { Directions } from "../constants";
 import { applyMove } from "../gameplay/moves";
-import { getTilePosition } from "../gameplay/tile-utils";
+import { getEmptyTiles, getTilePosition } from "../gameplay/tile-utils";
 
-const useBoard = () => {
+const useBoard = ({
+	seed = [
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+	],
+}: { seed?: number[][] | undefined } = {}) => {
 	const initialSequenceValue = 1;
 
-	const [board, setBoard] = useState<number[][]>([
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-	]);
+	const [board, setBoard] = useState<number[][]>(seed);
 
 	const newBoard = () => {
 		const firstTile = getTilePosition();
@@ -35,7 +38,19 @@ const useBoard = () => {
 	};
 
 	const move = (direction: Direction) => {
-		setBoard((currentBoard) => applyMove(currentBoard, direction));
+		const emptyTiles = getEmptyTiles(board);
+		if (emptyTiles.length === 0) {
+			const immovableDirections = Directions.filter(
+				(dir) =>
+					JSON.stringify(applyMove(board, dir)) === JSON.stringify(board),
+			);
+
+			if (immovableDirections.length === Directions.length) {
+				throw new Error("Game Over.");
+			}
+		} else {
+			setBoard((currentBoard) => applyMove(currentBoard, direction));
+		}
 	};
 	return { board, newBoard, move };
 };

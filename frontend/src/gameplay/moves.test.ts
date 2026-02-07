@@ -1,16 +1,22 @@
 import type { Direction } from "../constants";
 import { applyMove } from "./moves";
-import { getInitialTile, getPositionForEmptyTile } from "./tile-utils";
+import {
+	getEmptyTiles,
+	getInitialTile,
+	getPositionForEmptyTile,
+} from "./tile-utils";
 
 vi.mock("./tile-utils", () => ({
 	getInitialTile: vi.fn(),
 	getTilePosition: vi.fn(),
 	getPositionForEmptyTile: vi.fn(),
+	getEmptyTiles: vi.fn(),
 }));
 
 describe("Rule set!", () => {
 	beforeEach(() => {
 		vi.mocked(getInitialTile).mockReturnValue(1);
+		vi.mocked(getEmptyTiles).mockReturnValue([{ row: 1, col: 1 }]);
 	});
 
 	describe("Rule #1: Numbers move as far as possible in the pushing direction", () => {
@@ -411,6 +417,30 @@ describe("Rule set!", () => {
 			];
 
 			const moved = applyMove(boardHorizontal, direction as Direction);
+
+			expect(moved).toEqual(expectedBoard);
+		});
+	});
+
+	describe("Rule #6: Game over!", () => {
+		it("ends the game when there are more tiles that can be merged", () => {
+			vi.mocked(getPositionForEmptyTile).mockReturnValue({ row: 0, col: 0 });
+
+			const board = [
+				[0, 13, 5, 13],
+				[1, 8, 89, 1],
+				[1, 3, 8, 1],
+				[1, 8, 3, 8],
+			];
+			const direction = "RIGHT";
+			const expectedBoard = [
+				[1, 13, 5, 13],
+				[1, 8, 89, 1],
+				[1, 3, 8, 1],
+				[1, 8, 3, 8],
+			];
+
+			const moved = applyMove(board, direction as Direction);
 
 			expect(moved).toEqual(expectedBoard);
 		});

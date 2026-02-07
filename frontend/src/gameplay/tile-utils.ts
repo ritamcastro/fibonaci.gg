@@ -33,4 +33,22 @@ const getPositionForEmptyTile = (board: number[][]): Tile => {
 	return { row: emptyPositions[index][0], col: emptyPositions[index][1] };
 };
 
-export { getInitialTile, getPositionForEmptyTile, getTilePosition };
+const getEmptyTiles = (board: number[][]): Tile[] => {
+	const emptyPositions: Tile[] = [];
+
+	for (let row = 0; row < board.length; row++) {
+		for (let col = 0; col < board[row].length; col++) {
+			if (board[row][col] === 0) {
+				emptyPositions.push({ row, col });
+			}
+		}
+	}
+	return emptyPositions;
+};
+
+export {
+	getInitialTile,
+	getPositionForEmptyTile,
+	getTilePosition,
+	getEmptyTiles,
+};

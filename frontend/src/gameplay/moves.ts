@@ -1,6 +1,10 @@
 import type { Direction } from "../constants";
 import { areConsecutiveInFibSequence } from "./fibonacci";
-import { getInitialTile, getPositionForEmptyTile } from "./tile-utils";
+import {
+	getEmptyTiles,
+	getInitialTile,
+	getPositionForEmptyTile,
+} from "./tile-utils";
 
 const mergeTiles = (subline: number[]): number[] => {
 	const lineSize = subline.length;
@@ -24,47 +28,36 @@ const mergeTiles = (subline: number[]): number[] => {
 	return merged.filter((n) => n !== 0).reverse();
 };
 
-type MovedTiles = {
-	movedTiles: number[];
-	hasMerged: boolean;
-};
-
 /**
  * Moves tiles to the left by padding with zeros on the right
  * Example: [0, 1, 0, 2] -> [1, 2, 0, 0]
  */
-const leftPadWithZeros = (line: number[]): MovedTiles => {
+const leftPadWithZeros = (line: number[]): number[] => {
 	const zeros = line.filter((n) => n === 0);
 	const nonZeros = line.filter((n) => n !== 0);
 
 	const merged = mergeTiles(nonZeros);
 	const whatToPad = nonZeros.length - merged.length;
 
-	const movedTiles =
-		merged.length === 0
-			? [...zeros, ...nonZeros]
-			: [...zeros, ...new Array(whatToPad).fill(0), ...merged];
-
-	return { movedTiles, hasMerged: merged.length !== 0 };
+	return merged.length === 0
+		? [...zeros, ...nonZeros]
+		: [...zeros, ...new Array(whatToPad).fill(0), ...merged];
 };
 
 /**
  * Moves tiles to the right by padding with zeros on the left
  * Example: [0, 1, 0, 2] -> [0, 0, 1, 2]
  */
-const rightPadWithZeros = (line: number[]): MovedTiles => {
+const rightPadWithZeros = (line: number[]): number[] => {
 	const zeros = line.filter((n) => n === 0);
 	const nonZeros = line.filter((n) => n !== 0);
 
 	const merged = mergeTiles(nonZeros);
 	const whatToPad = nonZeros.length - merged.length;
 
-	const movedTiles =
-		merged.length === 0
-			? [...nonZeros, ...zeros]
-			: [...merged, ...new Array(whatToPad).fill(0), ...zeros];
-
-	return { movedTiles, hasMerged: merged.length !== 0 };
+	return merged.length === 0
+		? [...nonZeros, ...zeros]
+		: [...merged, ...new Array(whatToPad).fill(0), ...zeros];
 };
 
 const applyMove = (board: number[][], direction: Direction) => {
@@ -72,20 +65,14 @@ const applyMove = (board: number[][], direction: Direction) => {
 	const ncols = board[0].length;
 	const newBoard = board.map((row) => [...row]); // Deep copy
 
-	let merged = false;
-
 	if (direction === "RIGHT" || direction === "LEFT") {
 		// Process each row
 		for (let row = 0; row < nrows; row++) {
-			const { movedTiles, hasMerged } =
+			const movedTiles =
 				direction === "RIGHT"
 					? leftPadWithZeros(newBoard[row])
 					: rightPadWithZeros(newBoard[row]);
 			newBoard[row] = movedTiles;
-
-			if (hasMerged) {
-				merged = true;
-			}
 		}
 	}
 	if (direction === "UP" || direction === "DOWN") {
@@ -96,7 +83,7 @@ const applyMove = (board: number[][], direction: Direction) => {
 				column.push(newBoard[row][col]);
 			}
 
-			const { movedTiles, hasMerged } =
+			const movedTiles =
 				direction === "UP"
 					? rightPadWithZeros(column)
 					: leftPadWithZeros(column);
@@ -104,16 +91,13 @@ const applyMove = (board: number[][], direction: Direction) => {
 			for (let row = 0; row < nrows; row++) {
 				newBoard[row][col] = movedTiles[row];
 			}
-
-			if (hasMerged) {
-				merged = true;
-			}
 		}
 	}
 
-	if (merged) {
-		const tile = getPositionForEmptyTile(newBoard);
+	const emptyTiles = getEmptyTiles(newBoard);
 
+	if (emptyTiles.length !== 0) {
+		const tile = getPositionForEmptyTile(newBoard);
 		newBoard[tile.row][tile.col] = getInitialTile();
 	}
 
