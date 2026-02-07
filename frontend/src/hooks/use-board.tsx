@@ -19,14 +19,12 @@ const useBoard = ({
 	const newBoard = () => {
 		const firstTile = getTilePosition();
 		const secondTile = getTilePosition();
-
 		const updatedBoard = [
 			[0, 0, 0, 0],
 			[0, 0, 0, 0],
 			[0, 0, 0, 0],
 			[0, 0, 0, 0],
 		];
-
 		if (firstTile.row === secondTile.row && firstTile.col === secondTile.col) {
 			updatedBoard[1][1] = initialSequenceValue;
 			updatedBoard[2][2] = initialSequenceValue;
@@ -44,6 +42,15 @@ const useBoard = ({
 				(dir) =>
 					JSON.stringify(applyMove(board, dir)) === JSON.stringify(board),
 			);
+
+			const movableDirections = Directions.filter(
+				(dir) =>
+					JSON.stringify(applyMove(board, dir)) !== JSON.stringify(board),
+			);
+
+			if (movableDirections.includes(direction)) {
+				setBoard((currentBoard) => applyMove(currentBoard, direction));
+			}
 
 			if (immovableDirections.length === Directions.length) {
 				throw new Error("Game Over.");

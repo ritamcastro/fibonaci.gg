@@ -12,9 +12,8 @@ const Homepage = () => {
 	const [isGameOver, setIsGameOver] = useState(false);
 
 	const handleNewGame = () => {
-		// newBoard();
-		// setIsGameOver(false);
-		setIsGameOver(true);
+		newBoard();
+		setIsGameOver(false);
 	};
 
 	const handleGameOver = () => {
