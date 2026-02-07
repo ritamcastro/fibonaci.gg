@@ -103,3 +103,4 @@ const applyMove = (board: number[][], direction: Direction): number[][] => {
 
 export { applyMove, leftPadWithZeros, rightPadWithZeros };
 
+

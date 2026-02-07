@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import type { Direction } from "../constants";
 
-const useKeyboard = (onMove: (direction: Direction) => void) => {
+type UseKeyboardProps = {
+	onMove: (direction: Direction) => void;
+	onGameOver?: () => void;
+};
+
+const useKeyboard = ({ onMove, onGameOver }: UseKeyboardProps) => {
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
 			const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
@@ -22,7 +27,19 @@ const useKeyboard = (onMove: (direction: Direction) => void) => {
 
 			const direction = keyToDirection[event.code];
 			if (direction) {
-				onMove(direction);
+				try {
+					onMove(direction);
+				} catch (error) {
+					if (
+						error instanceof Error &&
+						error.message === "Game Over." &&
+						onGameOver
+					) {
+						onGameOver();
+					} else {
+						throw error;
+					}
+				}
 			}
 		};
 
@@ -31,7 +48,7 @@ const useKeyboard = (onMove: (direction: Direction) => void) => {
 		return () => {
 			window.removeEventListener("keydown", handleKeyDown);
 		};
-	}, [onMove]);
+	}, [onMove, onGameOver]);
 };
 
 export default useKeyboard;

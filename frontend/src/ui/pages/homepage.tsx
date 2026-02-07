@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useBoard from "../../hooks/use-board";
 import useKeyboard from "../../hooks/use-keyboard";
 import Button from "../atoms/button";
@@ -7,8 +8,17 @@ import "./homepage.css";
 
 const Homepage = () => {
 	const { board, newBoard, move } = useBoard();
+	const [isGameOver, setIsGameOver] = useState(false);
 
-	useKeyboard(move);
+	const handleNewGame = () => {
+		newBoard();
+		setIsGameOver(false);
+	};
+
+	useKeyboard({
+		onMove: move,
+		onGameOver: () => setIsGameOver(true),
+	});
 
 	return (
 		<section className="homepage">
@@ -19,7 +29,12 @@ const Homepage = () => {
 				</Link>
 				.
 			</span>
-			<Button variant="primary" onClick={() => newBoard()}>
+			{isGameOver && (
+				<div>
+					<p>Game Over!</p>
+				</div>
+			)}
+			<Button variant="primary" onClick={handleNewGame}>
 				New Game
 			</Button>
 
