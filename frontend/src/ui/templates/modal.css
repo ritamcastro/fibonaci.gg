@@ -1,0 +1,25 @@
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: var(--space-m) var(--space-xl);
+	background: var(--color-midnight-blue);
+	opacity: 0.95;
+
+	border-radius: var(--radius-l);
+	border: solid var(--space-xs) var(--color-gold-strong);
+
+	width: 44%;
+	height: 44%;
+
+	font-family: var(--font-sans);
+	color: var(--text-inverse);
+	line-height: var(--space-l);
+	text-align: center;
+
+	h2 {
+		font-size: var(--font-size-large);
+	}
+}
