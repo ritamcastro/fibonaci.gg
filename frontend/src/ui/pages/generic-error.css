@@ -1,0 +1,11 @@
+.generic-error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	font-family: var(--font-sans);
+
+	img {
+		width: 40vw;
+	}
+}
