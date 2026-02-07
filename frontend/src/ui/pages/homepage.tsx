@@ -5,14 +5,21 @@ import Button from "../atoms/button";
 import Link from "../atoms/link";
 import Board from "../templates/board";
 import "./homepage.css";
+import GameOver from "./game-over";
 
 const Homepage = () => {
 	const { board, newBoard, move } = useBoard();
 	const [isGameOver, setIsGameOver] = useState(false);
 
 	const handleNewGame = () => {
-		newBoard();
+		// newBoard();
+		// setIsGameOver(false);
+		setIsGameOver(true);
+	};
+
+	const handleGameOver = () => {
 		setIsGameOver(false);
+		newBoard();
 	};
 
 	useKeyboard({
@@ -29,11 +36,7 @@ const Homepage = () => {
 				</Link>
 				.
 			</span>
-			{isGameOver && (
-				<div>
-					<p>Game Over!</p>
-				</div>
-			)}
+			{isGameOver && <GameOver onClose={() => handleGameOver()} />}
 			<Button variant="primary" onClick={handleNewGame}>
 				New Game
 			</Button>
