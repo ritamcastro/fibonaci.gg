@@ -112,12 +112,28 @@ describe("board game dynamics", () => {
 
 		act(() => result.current.move("RIGHT"));
 		expect(result.current.board).toEqual(completeBoard);
-
-		// Directions that can merge
-		act(() => result.current.move("UP"));
-		expect(result.current.board).toEqual(completeBoard);
-
-		act(() => result.current.move("DOWN"));
-		expect(result.current.board).toEqual(completeBoard);
 	});
+
+	it.each`
+		direction | expectedBoard                                               | emptyTile
+		${"UP"}   | ${[[2, 3, 3, 3], [3, 3, 3, 3], [8, 3, 3, 3], [1, 8, 8, 8]]} | ${{ row: 3, col: 0 }}
+		${"DOWN"} | ${[[1, 3, 3, 3], [2, 3, 3, 3], [3, 3, 3, 3], [8, 8, 8, 8]]} | ${{ row: 0, col: 0 }}
+	`(
+		"moves a complete board $direction when it is possible to merge the tiles",
+		({ direction, expectedBoard, emptyTile }) => {
+			vi.mocked(getPositionForEmptyTile).mockReturnValue(emptyTile);
+
+			const completeBoard = [
+				[1, 3, 3, 3],
+				[1, 3, 3, 3],
+				[3, 3, 3, 3],
+				[8, 8, 8, 8],
+			];
+
+			const { result } = renderHook(() => useBoard({ seed: completeBoard }));
+
+			act(() => result.current.move(direction));
+			expect(result.current.board).toEqual(expectedBoard);
+		},
+	);
 });
