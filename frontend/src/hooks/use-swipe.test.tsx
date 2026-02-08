@@ -55,7 +55,7 @@ describe("useSwipe", () => {
 	`(
 		"calls onMove with $direction when linear directions are swipped",
 		({ direction, x0, y0, x1, y1 }) => {
-			renderHook(() => useSwipe({ onMove: mockOnMove }));
+			renderHook(() => useSwipe({ onMove: mockOnMove, onGameOver: vi.fn() }));
 
 			dispatchTouch({ gameBoard, type: "touchstart", x: x0, y: y0 });
 			dispatchTouch({ gameBoard, type: "touchend", x: x1, y: y1 });
@@ -66,15 +66,15 @@ describe("useSwipe", () => {
 	);
 
 	it.each`
-		direction  | x0     | y0      | x1     | y1
-		${"UP"}    | ${"0"} | ${"10"} | ${"0"} | ${"15"}
-		${"DOWN"}  | ${"0"} | ${"1"}  | ${"0"} | ${"10"}
-		${"RIGHT"} | ${"1"} | ${"0"}  | ${"8"} | ${"0"}
-		${"LEFT"}  | ${"8"} | ${"0"}  | ${"0"} | ${"0"}
+		x0     | y0      | x1     | y1
+		${"0"} | ${"10"} | ${"0"} | ${"15"}
+		${"0"} | ${"1"}  | ${"0"} | ${"10"}
+		${"1"} | ${"0"}  | ${"8"} | ${"0"}
+		${"8"} | ${"0"}  | ${"0"} | ${"0"}
 	`(
 		"doesn't call onMove with if the swipe is too small",
-		({ direction, x0, y0, x1, y1 }) => {
-			renderHook(() => useSwipe({ onMove: mockOnMove }));
+		({ x0, y0, x1, y1 }) => {
+			renderHook(() => useSwipe({ onMove: mockOnMove, onGameOver: vi.fn() }));
 
 			dispatchTouch({ gameBoard, type: "touchstart", x: x0, y: y0 });
 			dispatchTouch({ gameBoard, type: "touchend", x: x1, y: y1 });
@@ -92,7 +92,7 @@ describe("useSwipe", () => {
 	`(
 		"calls onMove with $direction when the direction is diagonal",
 		({ direction, x0, y0, x1, y1 }) => {
-			renderHook(() => useSwipe({ onMove: mockOnMove }));
+			renderHook(() => useSwipe({ onMove: mockOnMove, onGameOver: vi.fn() }));
 
 			dispatchTouch({ gameBoard, type: "touchstart", x: x0, y: y0 });
 			dispatchTouch({ gameBoard, type: "touchend", x: x1, y: y1 });
