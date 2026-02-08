@@ -12,10 +12,10 @@ body {
 	color: var(--color-text-primary);
 }
 
-#fibo48 {
+#fibonacci-gg {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	min-height: 100vh;
 }

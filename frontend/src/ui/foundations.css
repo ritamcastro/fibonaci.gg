@@ -65,6 +65,7 @@ header {
 }
 
 footer {
+	margin: var(--space-xl) 0;
 	padding: var(--space-l);
 	display: flex;
 	justify-content: center;
@@ -94,6 +95,7 @@ footer {
 	}
 
 	footer {
+		margin: var(--space-l) 0;
 		padding: var(--space-m);
 		font-size: var(--font-size-small);
 	}
@@ -120,6 +122,7 @@ footer {
 	}
 
 	footer {
+		margin: var(--space-m) 0;
 		padding: var(--space-s) var(--space-m);
 	}
 }

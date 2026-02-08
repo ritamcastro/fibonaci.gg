@@ -33,4 +33,4 @@ const Main = () => {
 	);
 };
 
-createRoot(document.getElementById("fibo48")!).render(<Main />);
+createRoot(document.getElementById("fibonacci-gg")!).render(<Main />);

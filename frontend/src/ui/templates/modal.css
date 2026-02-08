@@ -22,4 +22,17 @@
 	h2 {
 		font-size: var(--font-size-large);
 	}
+
+	/* Responsive design for mobile devices */
+	/* Tablet (≤768px) */
+	@media (max-width: 768px) {
+		width: 44%;
+		height: 66%;
+	}
+
+	/* Mobile (≤480px) */
+	@media (max-width: 480px) {
+		width: 44%;
+		height: 66%;
+	}
 }

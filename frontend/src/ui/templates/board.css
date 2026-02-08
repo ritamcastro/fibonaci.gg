@@ -18,6 +18,9 @@
 	border: solid var(--color-gold) var(--border-in-tiles);
 	border-radius: var(--radius-s);
 
+	touch-action: none;
+	overscroll-behavior: none;
+
 	.line {
 		display: flex;
 		row-gap: var(--space-m);
