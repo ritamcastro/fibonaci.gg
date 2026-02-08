@@ -32,21 +32,24 @@
 	--font-size-medium: 1.5rem;
 	--font-size-large: 2rem;
 	--font-size-extra: 2.5rem;
+
+	--breakpoint-mobile: 480px;
+	--breakpoint-tablet: 768px;
 }
 
 @font-face {
 	font-family: "Roboto";
-	src: url("/fonts/roboto-regular.woff2") format("woff2");
+	src: url("../assets/fonts/roboto-regular.woff2") format("woff2");
 }
 
 @font-face {
 	font-family: "Roboto";
-	src: url("/fonts/roboto-medium.woff2") format("woff2");
+	src: url("../assets/fonts/roboto-medium.woff2") format("woff2");
 }
 
 @font-face {
 	font-family: "Roboto";
-	src: url("/fonts/roboto-bold.woff2") format("woff2");
+	src: url("../assets/fonts/roboto-bold.woff2") format("woff2");
 }
 
 header {
@@ -107,7 +110,6 @@ footer {
 
 	header {
 		padding: var(--space-s) var(--space-m);
-
 		h1 {
 			font-size: var(--font-size-medium);
 		}
