@@ -1,7 +1,10 @@
 {
-	"name": "fibo-frontend",
+	"name": "fibonacci.gg-frontend",
 	"private": true,
 	"version": "1.0.0",
+	"description": "A game inspired by 2048, but using the Fibonacci sequence.",
+	"author": "Rita Castro",
+	"license": "MIT",
 	"type": "module",
 	"engines": {
 		"node": "23"
