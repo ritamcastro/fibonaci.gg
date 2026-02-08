@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
 import { useState } from "react";
+import { describe, expect, it } from "vitest";
 import Modal from "./modal";
 
 describe("Modals with MDN's showModal() and React's createPortal()", () => {

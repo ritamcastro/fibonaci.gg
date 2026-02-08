@@ -46,9 +46,7 @@ const Modal = ({ isOpen, onClose, title, cta, children }: ModalProps) => {
 	return createPortal(
 		<dialog className="modal" ref={dialogRef} aria-labelledby="modalLabel">
 			<>
-				<h2 id="modalLabel">
-					{title}
-				</h2>
+				<h2 id="modalLabel">{title}</h2>
 
 				{children}
 

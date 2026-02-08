@@ -5,8 +5,8 @@ import Button from "../atoms/button";
 import Link from "../atoms/link";
 import Board from "../templates/board";
 import "./homepage.css";
-import GameOver from "./game-over";
 import useSwipe from "../../hooks/use-swipe";
+import GameOver from "./game-over";
 
 const Homepage = () => {
 	const { board, newBoard, move } = useBoard();

@@ -1,5 +1,5 @@
-import useSwipe from "./use-swipe";
 import { renderHook } from "@testing-library/react";
+import useSwipe from "./use-swipe";
 
 describe("useSwipe", () => {
 	let mockOnMove: ReturnType<typeof vi.fn>;

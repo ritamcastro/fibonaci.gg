@@ -1,5 +1,5 @@
-import { areConsecutiveInFibSequence } from "../gameplay/fibonacci";
 import type { Direction } from "../constants";
+import { areConsecutiveInFibSequence } from "../gameplay/fibonacci";
 
 /**
  * Moves tiles to the left by padding with zeros on the right
@@ -102,5 +102,3 @@ const applyMove = (board: number[][], direction: Direction): number[][] => {
 };
 
 export { applyMove, leftPadWithZeros, rightPadWithZeros };
-
-

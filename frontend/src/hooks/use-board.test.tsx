@@ -1,10 +1,10 @@
 import { act, renderHook } from "@testing-library/react";
-import useBoard from "./use-board";
+import { Directions } from "../constants";
 import {
 	getPositionForEmptyTile,
 	getTilePosition,
 } from "../gameplay/tile-utils";
-import { Directions } from "../constants";
+import useBoard from "./use-board";
 
 vi.mock("../gameplay/tile-utils", async (importOriginal) => {
 	const mod: object = await importOriginal();

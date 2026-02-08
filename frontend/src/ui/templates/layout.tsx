@@ -1,5 +1,5 @@
-import { Outlet } from "react-router";
 import type { ReactNode } from "react";
+import { Outlet } from "react-router";
 import logo from "../../assets/logo.svg";
 
 type LayoutProps = {

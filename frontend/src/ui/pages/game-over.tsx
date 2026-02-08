@@ -1,6 +1,6 @@
-import Modal from "../templates/modal";
-import Button from "../atoms/button";
 import tilesPyramid from "../../assets/game-over.svg";
+import Button from "../atoms/button";
+import Modal from "../templates/modal";
 
 const GameOver = ({ onClose }: { onClose: () => void }) => {
 	return (
