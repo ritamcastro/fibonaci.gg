@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1300" height="400"
+     viewBox="0 0 1300 400"
+     version="1.1"
+>
+
+  <defs>
+    <!-- soft tile shadow -->
+    <filter id="tileShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0b0f2a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+ 
+  <!-- Shift content so the drawing is tightly framed inside the new viewBox -->
+  <g transform="translate(-250 -380)">
+
+    <!-- Spiral -->
+    <g transform="translate(-140 460) scale(0.6)">
+      <path d="M 845.0 195.0
+               A 5.0 5.0 0 0 0 850.0 200.0
+               A 10.0 10.0 0 0 0 840.0 210.0
+               A 15.0 15.0 0 0 0 825.0 195.0
+               A 25.0 25.0 0 0 0 850.0 170.0
+               A 40.0 40.0 0 0 0 890.0 210.0
+               A 65.0 65.0 0 0 0 825.0 275.0
+               A 105.0 105.0 0 0 0 720.0 170.0
+               A 170.0 170.0 0 0 0 890.0 0.0
+               A 275.0 275.0 0 0 0 1165.0 275.0"
+            fill="none"
+            stroke="#daa425"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </g>
+
+    <!-- Text -->
+    <text x="470" y="585"
+          font-family="Roboto, sans-serif"
+          font-size="150"
+          font-weight="700"
+          letter-spacing="0.2"
+          fill="#ffffff"
+          stroke="#2c3165"
+          stroke-width="4">
+          fibonacci
+          </text>
+
+    <!-- Tiles -->
+    <g filter="url(#tileShadow)"
+       font-family="Roboto, sans-serif"
+       font-weight="700"
+       text-anchor="middle"
+       dominant-baseline="middle">
+
+      <!-- 5 -->
+      <g transform="translate(1155 610) rotate(5)">
+        <rect x="-64" y="-64" width="128" height="128" rx="18" fill="#c9c0e3"/>
+        <text x="0" y="4" font-size="64" fill="#2c3165">5</text>
+      </g>
+
+      <!-- 8 -->
+      <g transform="translate(1255 560) rotate(8)">
+        <rect x="-74" y="-74" width="138" height="138" rx="20" fill="#8f78c9"/>
+        <text x="-5" y="0" font-size="72" fill="#ffffff">8</text>
+      </g>
+
+      <!-- 13 -->
+      <g transform="translate(1395 510) rotate(13)">
+        <rect x="-84" y="-70" width="148" height="148" rx="20" fill="#6f63b6"/>
+        <text x="-10" y="10" font-size="72" fill="#ffffff">13</text>
+      </g>
+
+    </g>
+  </g>
+</svg>

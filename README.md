@@ -1,4 +1,4 @@
-# ![Fibonacci.gg logo](./frontend/src/assets/logo.svg)
+# ![Fibonacci.gg logo](./logo.svg)
 
 [2048](https://www.2048.org/) is a video game that was super hype a few years back. The rules were simple, you had to two equal numbers to create its double. So 1 and 1 became 2, 2 and 2 became 4, and so on.
 
