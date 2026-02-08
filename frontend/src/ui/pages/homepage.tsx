@@ -29,10 +29,21 @@ const Homepage = () => {
 
 	useSwipe({ onMove: move, onGameOver: () => setIsGameOver(true) });
 
+	// defaults to desktop
+	let instructions = "Use your keyboard";
+
+	const width = window.innerWidth;
+	if (width > 0 && width <= 480) {
+		instructions = "Swipe in the screen";
+	}
+	if (width > 481 && width <= 768) {
+		instructions = "Swipe in the screen or use the keyboard";
+	}
+
 	return (
 		<section className="homepage">
 			<span className="instructions">
-				Use your keyboard to move the tiles and merge them following the{" "}
+				{instructions} to move the tiles and merge them following the{" "}
 				<Link url="https://en.wikipedia.org/wiki/Fibonacci_sequence">
 					Fibonacci sequence
 				</Link>
