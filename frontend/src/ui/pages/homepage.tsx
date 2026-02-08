@@ -6,6 +6,7 @@ import Link from "../atoms/link";
 import Board from "../templates/board";
 import "./homepage.css";
 import GameOver from "./game-over";
+import useSwipe from "../../hooks/use-swipe";
 
 const Homepage = () => {
 	const { board, newBoard, move } = useBoard();
@@ -25,6 +26,8 @@ const Homepage = () => {
 		onMove: move,
 		onGameOver: () => setIsGameOver(true),
 	});
+
+	useSwipe({ onMove: move, onGameOver: () => setIsGameOver(true) });
 
 	return (
 		<section className="homepage">

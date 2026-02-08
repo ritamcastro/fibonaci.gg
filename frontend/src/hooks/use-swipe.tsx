@@ -1,84 +1,75 @@
 import { useEffect, useRef } from "react";
 import type { Direction } from "../constants";
+import { getSwipeDirection } from "../gameplay/tile-utils";
 
-interface SwipeHandlers {
-	onSwipe: (direction: Direction) => void;
-	element?: HTMLElement | null;
-	enabled?: boolean;
-}
+const useSwipe = ({
+	onMove,
+	onGameOver,
+}: { onMove: (direction: Direction) => void; onGameOver: () => void }) => {
+	const startRef = useRef<{ x: number; y: number } | null>(null);
 
-/**
- * Hook to handle touch/swipe gestures for mobile game controls
- * @param onSwipe - Callback function called when a swipe is detected
- * @param element - Optional element to attach swipe listeners to (defaults to window)
- * @param enabled - Whether swipe controls are enabled (default: true)
- */
-const useSwipe = ({ onSwipe, element, enabled = true }: SwipeHandlers) => {
-	const touchStartRef = useRef<{ x: number; y: number } | null>(null);
-	const touchEndRef = useRef<{ x: number; y: number } | null>(null);
-
-	// Minimum distance in pixels to consider it a swipe
-	const minSwipeDistance = 50;
+	const minDistance = 50;
 
 	useEffect(() => {
-		if (!enabled) return;
+		const targetElement = document.getElementById("game-board") || window;
 
-		const targetElement = element || window;
-
-		const handleTouchStart = (event: TouchEvent) => {
-			const touch = event.touches[0];
-			touchStartRef.current = { x: touch.clientX, y: touch.clientY };
-			touchEndRef.current = null;
+		const onTouchStart = (e: TouchEvent) => {
+			const t = e.touches[0];
+			if (!t) return;
+			startRef.current = { x: t.clientX, y: t.clientY };
 		};
 
-		const handleTouchMove = (event: TouchEvent) => {
-			const touch = event.touches[0];
-			touchEndRef.current = { x: touch.clientX, y: touch.clientY };
-		};
+		const onTouchEnd = (e: TouchEvent) => {
+			const start = startRef.current;
+			if (!start) return;
 
-		const handleTouchEnd = () => {
-			if (!touchStartRef.current || !touchEndRef.current) return;
+			const t = e.changedTouches[0];
+			if (!t) return;
 
-			const deltaX = touchEndRef.current.x - touchStartRef.current.x;
-			const deltaY = touchEndRef.current.y - touchStartRef.current.y;
+			const dx = t.clientX - start.x;
+			// DOM touch/mouse events clientY increases as you go down the screen
+			const dy = -(t.clientY - start.y);
 
-			const absDeltaX = Math.abs(deltaX);
-			const absDeltaY = Math.abs(deltaY);
-
-			// Determine if it's a horizontal or vertical swipe
-			if (absDeltaX > absDeltaY) {
-				// Horizontal swipe
-				if (absDeltaX > minSwipeDistance) {
-					onSwipe(deltaX > 0 ? "RIGHT" : "LEFT");
-				}
-			} else {
-				// Vertical swipe
-				if (absDeltaY > minSwipeDistance) {
-					onSwipe(deltaY > 0 ? "DOWN" : "UP");
+			const direction = getSwipeDirection({ dx, dy, minDistance });
+			if (direction !== null) {
+				try {
+					onMove(direction);
+				} catch (error) {
+					if (
+						error instanceof Error &&
+						error.message === "Game Over." &&
+						onGameOver
+					) {
+						onGameOver();
+					}
 				}
 			}
 
-			// Reset touch points
-			touchStartRef.current = null;
-			touchEndRef.current = null;
+			startRef.current = null;
 		};
 
-		targetElement.addEventListener("touchstart", handleTouchStart, {
-			passive: true,
-		});
-		targetElement.addEventListener("touchmove", handleTouchMove, {
-			passive: true,
-		});
-		targetElement.addEventListener("touchend", handleTouchEnd, {
+		targetElement.addEventListener(
+			"touchstart",
+			onTouchStart as EventListener,
+			{
+				passive: true,
+			},
+		);
+		targetElement.addEventListener("touchend", onTouchEnd as EventListener, {
 			passive: true,
 		});
 
 		return () => {
-			targetElement.removeEventListener("touchstart", handleTouchStart);
-			targetElement.removeEventListener("touchmove", handleTouchMove);
-			targetElement.removeEventListener("touchend", handleTouchEnd);
+			targetElement.removeEventListener(
+				"touchstart",
+				onTouchStart as EventListener,
+			);
+			targetElement.removeEventListener(
+				"touchend",
+				onTouchEnd as EventListener,
+			);
 		};
-	}, [onSwipe, element, enabled]);
+	}, [onMove, onGameOver]);
 };
 
 export default useSwipe;

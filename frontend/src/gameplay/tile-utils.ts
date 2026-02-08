@@ -1,3 +1,5 @@
+import type { Direction } from "../constants";
+
 type Tile = {
 	row: number;
 	col: number;
@@ -46,9 +48,33 @@ const getEmptyTiles = (board: number[][]): Tile[] => {
 	return emptyPositions;
 };
 
+const getSwipeDirection = ({
+	dx,
+	dy,
+	minDistance,
+}: { dx: number; dy: number; minDistance: number }): Direction | null => {
+	const dominance = 1;
+
+	const absX = Math.abs(dx);
+	const absY = Math.abs(dy);
+
+	if (Math.hypot(dx, dy) < minDistance) return null;
+
+	if (absX >= absY * dominance) {
+		return dx > 0 ? "RIGHT" : "LEFT";
+	}
+	if (absY >= absX * dominance) {
+		return dy > 0 ? "DOWN" : "UP";
+	}
+
+	// oh no, we can't seem to choose a direction
+	return null;
+};
+
 export {
 	getInitialTile,
 	getPositionForEmptyTile,
 	getTilePosition,
 	getEmptyTiles,
+	getSwipeDirection,
 };
