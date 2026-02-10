@@ -53,6 +53,9 @@
 }
 
 header {
+	margin-top: var(--space-l);
+	display: flex;
+
 	font-size: var(--font-size-large);
 
 	h1 {
