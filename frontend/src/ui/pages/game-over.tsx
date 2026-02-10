@@ -17,7 +17,7 @@ const GameOver = ({ onClose }: { onClose: () => void }) => {
 			<img
 				src={tilesPyramid}
 				aria-label="Tiles piled up in a messy way."
-				style={{ width: "50%" }}
+				style={{ width: window.innerWidth < 480 ? "100%" : "85%" }}
 			/>
 			No more moves available... <br /> Better luck next time!
 		</Modal>

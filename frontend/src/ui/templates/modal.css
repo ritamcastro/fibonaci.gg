@@ -4,7 +4,7 @@
 	justify-content: space-between;
 	align-items: center;
 
-	padding: var(--space-m) var(--space-xl);
+	padding: var(--space-xl) var(--space-xl);
 	background: var(--color-midnight-blue);
 	opacity: 0.95;
 
@@ -12,7 +12,7 @@
 	border: solid var(--space-xs) var(--color-gold-strong);
 
 	width: 44%;
-	height: 44%;
+	height: 75%;
 
 	font-family: var(--font-sans);
 	color: var(--text-inverse);
@@ -26,13 +26,13 @@
 	/* Responsive design for mobile devices */
 	/* Tablet (≤768px) */
 	@media (max-width: 768px) {
-		width: 44%;
-		height: 66%;
+		width: 60%;
+		height: 80%;
 	}
 
 	/* Mobile (≤480px) */
 	@media (max-width: 480px) {
-		width: 44%;
-		height: 66%;
+		width: 60%;
+		height: 80%;
 	}
 }
