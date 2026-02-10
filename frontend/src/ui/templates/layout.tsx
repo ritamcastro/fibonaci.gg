@@ -1,7 +1,7 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { ReactNode } from "react";
 import { Outlet } from "react-router";
 import logo from "../../assets/logo.svg";
-import { Analytics } from "@vercel/analytics/react";
 
 type LayoutProps = {
 	children?: ReactNode;
