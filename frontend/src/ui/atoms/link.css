@@ -1,12 +1,12 @@
 a {
 	color: var(--color-gold);
-	text-decoration: none;
+	text-decoration: underline;
 	transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 a:hover {
 	color: var(--color-gold-light);
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:focus-visible {
