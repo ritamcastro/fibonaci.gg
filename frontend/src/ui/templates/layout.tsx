@@ -6,7 +6,7 @@ import logo from "../../assets/logo.svg";
 type LayoutProps = {
 	children?: ReactNode;
 };
-console.log(logo);
+
 const Layout = ({ children }: LayoutProps) => {
 	return (
 		<>
