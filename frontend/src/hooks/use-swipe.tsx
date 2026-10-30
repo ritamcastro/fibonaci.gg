@@ -28,7 +28,7 @@ const useSwipe = ({
 
 			const dx = t.clientX - start.x;
 			// DOM touch/mouse events clientY increases as you go down the screen
-			const dy = -(t.clientY - start.y);
+			const dy = t.clientY - start.y;
 
 			const direction = getSwipeDirection({ dx, dy, minDistance });
 			if (direction !== null) {
