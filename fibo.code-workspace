@@ -4,7 +4,12 @@
 			"path": ".",
 			"name": "root"
 		},
-		{"path": "frontend"}
+		{
+			"path": "e2e"
+		},
+		{
+			"path": "frontend"
+		}
 	],
 	"settings": {
 		"vitest.shellType": "terminal",
